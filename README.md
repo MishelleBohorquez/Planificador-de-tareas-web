@@ -76,6 +76,14 @@ Repositorio del proyecto:
 
 > https://github.com/MishelleBohorquez/Planificador-de-tareas-web
 
+Trello:
+
+> https://trello.com/invite/b/6a6ba9e0d0f4b63c20da0b37/ATTI11f19ff4d79ec47eaef6a8287e364c0b61AAB5B8/planificador-de-tareas-web
+
+Figma:
+
+> https://www.figma.com/design/rAzUnvnSycp9KMtHWIoljX/Planificador-de-tareas-web?node-id=0-1&t=sMPOSCQqqvDRBLOg-1
+
 ---
 
 ## Autora
