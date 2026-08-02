@@ -1,0 +1,46 @@
+
+#sidebar-menu {
+    background-color: #0c0c0c;
+    min-height: 100vh;
+}
+
+#sidebar-menu .navbar-brand {
+    color: #ffffff;
+}
+
+#sidebar-menu .nav-link {
+    color: #ffffff;
+}
+
+#sidebar-menu .nav-link:hover {
+    color: #ffffff;
+    background-color: #b1144e9a;
+}
+
+#sidebar-menu .nav-link.active {
+    background-color: #5E0930;
+    color: #ffffff;
+}
+
+#botonHoyTodas .nav-link.active {
+    background-color: #58082d;
+    color: #ffffff;
+}
+
+#botonHoyTodas .nav-link:hover {
+    background-color: #58082db6;
+}
+
+#pills-tab .nav-link.active {
+    background-color: #58082e;
+    color: #ffffff !important;
+}
+
+#pills-tab .nav-link {
+    color: #000000 !important;
+    background-color: transparent;
+}
+
+#pills-tab .nav-link:hover:not(.active) {
+    background-color: rgba(88, 8, 46, 0.1) !important;
+}
