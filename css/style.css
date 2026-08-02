@@ -22,15 +22,6 @@
     color: #ffffff;
 }
 
-#botonHoyTodas .nav-link.active {
-    background-color: #58082d;
-    color: #ffffff;
-}
-
-#botonHoyTodas .nav-link:hover {
-    background-color: #58082db6;
-}
-
 #pills-tab .nav-link.active {
     background-color: #58082e;
     color: #ffffff !important;
