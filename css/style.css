@@ -59,6 +59,14 @@ body {
     background-color: #000000;
 }
 
-#saludo{
+#titulosSubtitulos{
     color: #D0BCFF;
+}
+#datoVer{
+    color: #CBC3D7;
+}
+
+#anadirTareaCard{
+    color: #ffffff;
+    border-color: #171F33;
 }
