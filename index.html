@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/png" href="imagenes/iconBlanco.png">
     <link rel="stylesheet" href="css/style.css">
     <title>Tashs</title>
@@ -17,7 +22,7 @@
     <div class="d-flex align-items-start">
         <div class="d-flex flex-column p-3 min-vh-100" id="sidebar-menu" style="min-width: 200px;">
             <a class="navbar-brand d-flex align-items-center mb-3 text-decoration-none fw-bold fs-5" href="#">
-                <img src="imagenes/iconCherry.png" alt="Logo" width="30" height="24"
+                <img src="imagenes/iconBlanco.png" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top me-2">
                 Tashs
             </a>
@@ -26,22 +31,22 @@
                 <button class="nav-link active text-start" id="v-pills-home-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
                     aria-selected="true">
-                    <i class="bi bi-calendar me-2"></i> Dashboard
+                    <i class="bi bi-grid-1x2 me-2"></i> Dashboard
                 </button>
                 <button class="nav-link text-start" id="v-pills-profile-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
                     aria-selected="false">
-                    <i class="bi bi-list-check me-2"></i> Tareas
+                    <i class="bi bi-journal-check me-2"></i> Tareas
                 </button>
                 <button class="nav-link text-start" id="v-pills-messages-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
                     aria-selected="false">
-                    <i class="bi bi-calendar4-week me-2"></i> Calendario
+                    <i class="bi bi-calendar me-2"></i> Calendario
                 </button>
                 <button class="nav-link text-start" id="v-pills-settings-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
                     aria-selected="false">
-                    <i class="bi bi-kanban me-2"></i> Proyectos
+                    <i class="bi bi-person me-2"></i>Perfil
                 </button>
             </div>
         </div>
@@ -52,15 +57,13 @@
             <!-- Hoy - Contenido -->
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
                 tabindex="0">
-                <h3>Hola, Mishelle</h3>
+                <h3 id="saludo">Hola, Mishelle</h3>
                 <p>Bienvenida a la sección principal.</p>
 
 
-                
+
 
                 <!-- Ingresar la tarea -->
-                <div class="card">
-                    <div class="card-body" id="anadirTareaCard">
                         <h5>Agregar tarea</h5>
                         <form>
                             <div class="row g-3 mb-3">
@@ -94,12 +97,8 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
 
                 <!-- Hoy - Sección de Tareas -->
-                <div class="card">
-                    <div class="card-body" id="verTareas">
                         <h5 class="mt-4">Mis tareas</h5>
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -136,8 +135,6 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                </div>
 
                 <!-- Hoy - Barra horizontal -->
                 <div class="tab-content" id="pills-tabContent">
