@@ -69,4 +69,23 @@ body {
 #anadirTareaCard{
     color: #ffffff;
     border-color: #171F33;
+    border-width: 2px;
+}
+
+#cardPrincipalResumen{
+    background-color: transparent;
+    border: none;
+}
+
+#cardResumenTrabajo{
+
+  background-color: #E9DDFF;
+}
+
+#cardResumenPersonal{
+  background-color: #E9DDFF;
+}
+
+#cardResumenSalud{
+  background-color: #E9DDFF;
 }

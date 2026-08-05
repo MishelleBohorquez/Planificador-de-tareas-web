@@ -60,28 +60,85 @@
                 <h1 id="titulosSubtitulos">Hola, Mishelle</h1>
                 <p id="datoVer">Bienvenida a la sección principal.</p>
 
-                <h4 id="titulosSubtitulos">Tareas para Hoy</h4>
+                <div class="container-fluid">
+                    <div class="row">
 
-                <!-- Hoy - Sección de Tareas -->
-                <div class="card" id="anadirTareaCard">
-                    <div class="card-body">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                            <label class="form-check-label" for="checkDefault">
-                                Default checkbox
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                        <!-- Sección de Tareas -->
+                        <div class="col-lg-8">
+                            <h4 id="titulosSubtitulos">Tareas para Hoy</h4>
 
-                <div class="card" id="anadirTareaCard">
-                    <div class="card-body">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
-                            <label class="form-check-label" for="checkChecked">
-                                Checked checkbox
-                            </label>
+                            <div class="card mb-3" id="anadirTareaCard">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkDefault">
+                                        <label class="form-check-label" for="checkDefault">
+                                            Default checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3" id="anadirTareaCard">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkChecked" checked>
+                                        <label class="form-check-label" for="checkChecked">
+                                            Checked checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Áreas de enfoque -->
+                        <div class="col-lg-4">
+                            <div class="card p-3" id="cardPrincipalResumen">
+
+                                <h4 id="titulosSubtitulos">Áreas de enfoque</h4>
+
+                                <div class="row g-3">
+
+                                    <!-- Trabajo -->
+                                    <div class="col-6">
+                                        <div class="card h-100" id="cardResumenTrabajo">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Trabajo</h5>
+                                                <h6 class="card-subtitle text-body-secondary">
+                                                    Tareas
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Personal -->
+                                    <div class="col-6">
+                                        <div class="card h-100" id="cardResumenPersonal">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Personal</h5>
+                                                <h6 class="card-subtitle text-body-secondary">
+                                                    Tareas
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Salud -->
+                                    <div class="col-12">
+                                        <div class="card" id="cardResumenSalud">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Salud</h5>
+                                                <h6 class="card-subtitle text-body-secondary">
+                                                    Tareas
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
