@@ -13,81 +13,137 @@
 
 <body>
 
-    <!-- Barra vertical -->
+    <!-- Barra vertical - Nombres -->
     <div class="d-flex align-items-start">
-        <div class="d-flex flex-column me-4 p-3 min-vh-100" id="sidebar-menu" style="min-width: 200px;">
+        <div class="d-flex flex-column p-3 min-vh-100" id="sidebar-menu" style="min-width: 200px;">
             <a class="navbar-brand d-flex align-items-center mb-3 text-decoration-none fw-bold fs-5" href="#">
-                <img src="imagenes/iconBlanco.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2">
+                <img src="imagenes/iconCherry.png" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top me-2">
                 Tashs
             </a>
 
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <button class="nav-link active text-start" id="v-pills-home-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                    data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                    aria-selected="true">
                     <i class="bi bi-calendar me-2"></i> Hoy
                 </button>
                 <button class="nav-link text-start" id="v-pills-profile-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                    data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                    aria-selected="false">
                     <i class="bi bi-list-check me-2"></i> Tareas
                 </button>
                 <button class="nav-link text-start" id="v-pills-messages-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
+                    aria-selected="false">
                     <i class="bi bi-calendar4-week me-2"></i> Calendario
                 </button>
                 <button class="nav-link text-start" id="v-pills-settings-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                    data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
+                    aria-selected="false">
                     <i class="bi bi-kanban me-2"></i> Proyectos
                 </button>
             </div>
         </div>
 
-        <!-- Barra vertical -->
-        <div class="tab-content flex-grow-1 p-3" id="v-pills-tabContent">
+        <!-- Barra vertical - Contenido -->
+        <div class="tab-content flex-grow-1 p-3 min-vh-100" id="v-pills-tabContent">
 
             <!-- Hoy - Contenido -->
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
+                tabindex="0">
                 <h3>Hola, Mishelle</h3>
                 <p>Bienvenida a la sección principal.</p>
-                <h5 class="mt-4">Mis tareas</h5>
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-                                Todas
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-                                Pendientes
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
-                                En progreso
-                            </button>
-                        </li>
-                    </ul>
 
-                    <!-- Filtro de prioridad -->
-                    <div style="width: 160px;">
-                        <select class="form-select form-select-sm" aria-label="Filtro de prioridad">
-                            <option selected>Prioridad</option>
-                            <option value="1">Alta</option>
-                            <option value="2">Media</option>
-                            <option value="3">Baja</option>
-                        </select>
+                
+
+                <!-- Ingresar la tarea -->
+                <div class="card">
+                    <div class="card-body" id="anadirTareaCard">
+                        <h5>Agregar tarea</h5>
+                        <form>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-5">
+                                    <label for="nombreTarea" class="form-label">Nombre tarea</label>
+                                    <input type="text" class="form-control" id="nombreTarea"
+                                        placeholder="Ingrese el nombre de la tarea">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="fechaEntrega" class="form-label">Fecha de entrega</label>
+                                    <input type="date" class="form-control" id="fechaEntrega">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="prioridad" class="form-label">Prioridad</label>
+                                    <select class="form-select" id="prioridad">
+                                        <option selected disabled>Seleccione...</option>
+                                        <option value="alta">Alta</option>
+                                        <option value="media">Media</option>
+                                        <option value="baja">Baja</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary">
+                                        Añadir
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hoy - Sección de Tareas -->
+                <div class="card">
+                    <div class="card-body" id="verTareas">
+                        <h5 class="mt-4">Mis tareas</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                        aria-selected="true">
+                                        Todas
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-profile" type="button" role="tab"
+                                        aria-controls="pills-profile" aria-selected="false">
+                                        Pendientes
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-contact" type="button" role="tab"
+                                        aria-controls="pills-contact" aria-selected="false">
+                                        En progreso
+                                    </button>
+                                </li>
+                            </ul>
+
+                            <!-- Filtro de prioridad -->
+                            <div style="width: 160px;">
+                                <select class="form-select form-select-sm" aria-label="Filtro de prioridad">
+                                    <option selected>Prioridad</option>
+                                    <option value="1">Alta</option>
+                                    <option value="2">Media</option>
+                                    <option value="3">Baja</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Hoy - Barra horizontal -->
                 <div class="tab-content" id="pills-tabContent">
-                    
                     <!-- Barra horizontal - Todas -->
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                        aria-labelledby="pills-home-tab" tabindex="0">
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" id="exampleRadios1" checked>
                             <label class="form-check-label" for="exampleRadios1">
@@ -103,12 +159,14 @@
                     </div>
 
                     <!-- Barra horizontal - Pendientes -->
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                        tabindex="0">
                         <p>Aquí se muestran solo las tareas pendientes.</p>
                     </div>
 
                     <!-- Barra horizontal - En progreso -->
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+                        tabindex="0">
                         <p>Aquí se muestran solo las tareas en progreso.</p>
                     </div>
                 </div>
@@ -117,22 +175,25 @@
 
 
             <!-- Tareas - Contenido -->
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
-                <h3>Perfil / Tareas</h3>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
+                tabindex="0">
+                <h3>Tareas</h3>
                 <p>Información de tareas.</p>
             </div>
 
             <!-- Calendario - Contenido -->
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
+                tabindex="0">
                 <h3>Calendario</h3>
-                <div class="mb-3 style="max-width: 300px;>
+                <div class="mb-3 style=" max-width: 300px;>
                     <label for="fecha" class="form-label">Selecciona una fecha:</label>
                     <input type="date" class="form-control" id="fecha">
                 </div>
             </div>
 
             <!-- Proyectos - Contenido -->
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"
+                tabindex="0">
                 <h3>Proyectos</h3>
                 <p>Configuración y gestión de proyectos.</p>
             </div>

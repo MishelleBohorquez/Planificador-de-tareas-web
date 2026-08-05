@@ -1,15 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 
 #sidebar-menu {
-    background-color: #0c0c0c;
+    background-color: #FCFAF8;
     min-height: 100vh;
+    width: 280px;
+
 }
 
 #sidebar-menu .navbar-brand {
-    color: #ffffff;
+    color: #050505;
 }
 
 #sidebar-menu .nav-link {
-    color: #ffffff;
+    color: #000000;
 }
 
 #sidebar-menu .nav-link:hover {
@@ -24,14 +30,26 @@
 
 #pills-tab .nav-link.active {
     background-color: #58082e;
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 #pills-tab .nav-link {
-    color: #000000 !important;
+    color: #000000;
     background-color: transparent;
 }
 
 #pills-tab .nav-link:hover:not(.active) {
-    background-color: rgba(88, 8, 46, 0.1) !important;
+    background-color: rgba(88, 8, 46, 0.1);
+}
+
+#v-pills-tabContent{
+    background-color: #FFFFFF;
+}
+
+#anadirTareaCard{
+    background-color: #ffffff00;
+}
+
+#anadirTareaCard .btn-primary{
+    background-color: #000000;
 }
