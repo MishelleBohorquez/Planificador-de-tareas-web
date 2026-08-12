@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="icon" type="image/png" href="imagenes/iconBlanco.png">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.css" rel="stylesheet">
     <title>Tashs</title>
 </head>
 
@@ -182,31 +183,176 @@
             <!-- Tareas - Contenido -->
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
                 tabindex="0">
-                <h3>Tareas</h3>
-                <p>Información de tareas.</p>
+                <h3 id="titulosSubtitulos">Tus tareas</h3>
+                <p id="datoVer">Gestiona y prioriza tu trabajo pendiente.</p>
+
+                <!-- Pestañas de tareas -->
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-todo-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-todo" type="button" role="tab" aria-controls="pills-todo"
+                            aria-selected="true">Todo</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-pendiente-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-pendiente" type="button" role="tab" aria-controls="pills-pendiente"
+                            aria-selected="false">Pendiente</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-hecho-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-hecho" type="button" role="tab" aria-controls="pills-hecho"
+                            aria-selected="false">Hecho</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-prioridad-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-prioridad" type="button" role="tab" aria-controls="pills-prioridad"
+                            aria-selected="false">Prioridad</button>
+                    </li>
+                </ul>
+                <!-- Terminación de pestañas tareas -->
+
+                <!-- Contenido de las pestañas tareas -->
+                <div class="tab-content" id="pills-tabContent">
+
+                    <!-- Todo inicio -->
+                    <div class="tab-pane fade show active" id="pills-todo" role="tabpanel"
+                        aria-labelledby="pills-home-tab" tabindex="0">
+                        <div class="col-lg-8">
+
+                            <div class="card mb-3" id="anadirTareaCard">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkDefault">
+                                        <label class="form-check-label" for="checkDefault">
+                                            Default checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3" id="anadirTareaCard">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkChecked" checked>
+                                        <label class="form-check-label" for="checkChecked">
+                                            Checked checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Todo fin -->
+
+                    <!-- Pendiente inicio -->
+                    <div class="tab-pane fade" id="pills-pendiente" role="tabpanel" aria-labelledby="pills-profile-tab"
+                        tabindex="0">
+                        <div class="card mb-3" id="anadirTareaCard">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkDefault">
+                                    <label class="form-check-label" for="checkDefault">
+                                        Default checkbox
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3" id="anadirTareaCard">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkChecked" checked>
+                                    <label class="form-check-label" for="checkChecked">
+                                        Checked checkbox
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pendiente fin -->
+
+                    <!-- Hecho inicio -->
+                    <div class="tab-pane fade" id="pills-hecho" role="tabpanel" aria-labelledby="pills-contact-tab"
+                        tabindex="0">
+                        <div class="card mb-3" id="anadirTareaCard">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkDefault">
+                                    <label class="form-check-label" for="checkDefault">
+                                        Default checkbox
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3" id="anadirTareaCard">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkChecked" checked>
+                                    <label class="form-check-label" for="checkChecked">
+                                        Checked checkbox
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hecho fin -->
+
+                    <!-- Prioridad inicio -->
+                    <div class="tab-pane fade" id="pills-prioridad" role="tabpanel" aria-labelledby="pills-disabled-tab"
+                        tabindex="0">
+                        <div class="card mb-3" id="anadirTareaCard">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkDefault">
+                                    <label class="form-check-label" for="checkDefault">
+                                        Default checkbox
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3" id="anadirTareaCard">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkChecked" checked>
+                                    <label class="form-check-label" for="checkChecked">
+                                        Checked checkbox
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Prioridad fin -->
+                </div>
+                <!-- Terminación de Contenido de las pestañas tareas -->
             </div>
+
+            <!-- Tareas - Contenido - Fin -->
 
             <!-- Calendario - Contenido -->
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
                 tabindex="0">
-                <h3>Calendario</h3>
+                <h3 id="titulosSubtitulos">Calendario</h3>
                 <div class="mb-3 style=" max-width: 300px;>
-                    <label for="fecha" class="form-label">Selecciona una fecha:</label>
+                    <label for="fecha" class="form-label" id="datoVer">Selecciona una fecha:</label>
                     <input type="date" class="form-control" id="fecha">
+                <div id="v-pills-messages" class="tab-pane fade" role="tabpanel">
                 </div>
             </div>
 
             <!-- Proyectos - Contenido -->
             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"
                 tabindex="0">
-                <h3>Proyectos</h3>
-                <p>Configuración y gestión de proyectos.</p>
+                <h3 id="titulosSubtitulos">Perfil</h3>
+                <p id="datoVer">Perfil del usuario.</p>
             </div>
 
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

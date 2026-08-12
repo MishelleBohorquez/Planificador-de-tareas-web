@@ -89,3 +89,18 @@ body {
 #cardResumenSalud{
   background-color: #E9DDFF;
 }
+
+#pills-tab .nav-link {
+    color: #CBC3D7;
+    background-color: transparent;
+}
+
+#pills-tab .nav-link:hover:not(.active) {
+    color: #ffffff;
+    background-color: #3E495D;
+}
+
+#pills-tab .nav-link.active {
+    background-color: #A078FF;
+    color: #ffffff;
+}
