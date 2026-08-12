@@ -144,7 +144,7 @@
                 </div>
 
                 <!-- Ingresar la tarea -->
-                <h5>Agregar tarea</h5>
+                <h4 id="titulosSubtitulos">Agregar tarea</h4>
                 <form>
                     <div class="row g-3 mb-3">
                         <div class="col-md-5">
@@ -152,10 +152,25 @@
                             <input type="text" class="form-control" id="nombreTarea"
                                 placeholder="Ingrese el nombre de la tarea">
                         </div>
+                        <div class="col-md-5">
+                            <label for="descripcionTarea" class="form-label">Descripción tarea</label>
+                            <input type="text" class="form-control" id="descripcionTarea"
+                                placeholder="Ingrese descripcion de la tarea">
+                        </div>
 
                         <div class="col-md-3">
                             <label for="fechaEntrega" class="form-label">Fecha de entrega</label>
                             <input type="date" class="form-control" id="fechaEntrega">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado">
+                                <option selected disabled>Seleccione...</option>
+                                <option value="porHacer">Por hacer</option>
+                                <option value="enCurso">En curso</option>
+                                <option value="Hecho">Hecho</option>
+                            </select>
                         </div>
 
                         <div class="col-md-4">
@@ -194,19 +209,19 @@
                             aria-selected="true">Todo</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-pendiente-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-pendiente" type="button" role="tab" aria-controls="pills-pendiente"
-                            aria-selected="false">Pendiente</button>
+                        <button class="nav-link" id="pills-porHacer-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-porHacer" type="button" role="tab" aria-controls="pills-porHacer"
+                            aria-selected="false">Por hacer</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-enCurso-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-enCurso" type="button" role="tab" aria-controls="pills-enCurso"
+                            aria-selected="false">En curso</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-hecho-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-hecho" type="button" role="tab" aria-controls="pills-hecho"
                             aria-selected="false">Hecho</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-prioridad-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-prioridad" type="button" role="tab" aria-controls="pills-prioridad"
-                            aria-selected="false">Prioridad</button>
                     </li>
                 </ul>
                 <!-- Terminación de pestañas tareas -->
