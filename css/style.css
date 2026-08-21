@@ -1,106 +1,137 @@
+/* ==========================================
+   Estilos Generales
+   ========================================== */
 body {
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
-}
-
-#sidebar-menu {
-    background-color: #131B2E;
-    min-height: 100vh;
-    width: 280px;
-
-}
-
-#sidebar-menu .navbar-brand {
-    color: #D0BCFF;
-}
-
-#sidebar-menu .nav-link {
-    color: #CBC3D7;
-}
-
-#sidebar-menu .nav-link:hover {
-    color: #ffffff;
-    background-color: #3E495D;
-}
-
-#sidebar-menu .nav-link.active {
-    background-color: #A078FF;
-    color: #ffffff;
-}
-
-#pills-tab .nav-link.active {
-    background-color: #A078FF;
-    color: #ffffff;
-}
-
-#pills-tab .nav-link {
-    color: #000000;
-    background-color: transparent;
-}
-
-#pills-tab .nav-link:hover:not(.active) {
-    background-color: rgba(88, 8, 46, 0.1);
-}
-
-#v-pills-tabContent{
-    background-color: #0B1326;
-}
-
-#v-pills-home{
+    background-color: #0B1326 !important;
     color: #edeff1;
 }
 
-#anadirTareaCard{
-    background-color: #ffffff00;
+/* ==========================================
+   Menú Lateral (Sidebar)
+   ========================================== */
+.sidebar {
+    background-color: #131B2E !important;
+    min-height: 100vh;
+    width: 280px;
+    border-right: 1px solid #171F33 !important;
 }
 
-#anadirTareaCard .btn-primary{
-    background-color: #000000;
+.sidebar .navbar-brand {
+    color: #D0BCFF !important;
 }
 
-#titulosSubtitulos{
-    color: #D0BCFF;
-}
-#datoVer{
+.sidebar .nav-link {
     color: #CBC3D7;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease-in-out;
 }
 
-#anadirTareaCard{
-    color: #ffffff;
-    border-color: #171F33;
-    border-width: 2px;
-}
-
-#cardPrincipalResumen{
-    background-color: transparent;
-    border: none;
-}
-
-#cardResumenTrabajo{
-
-  background-color: #E9DDFF;
-}
-
-#cardResumenPersonal{
-  background-color: #E9DDFF;
-}
-
-#cardResumenSalud{
-  background-color: #E9DDFF;
-}
-
-#pills-tab .nav-link {
-    color: #CBC3D7;
-    background-color: transparent;
-}
-
-#pills-tab .nav-link:hover:not(.active) {
+.sidebar .nav-link:hover {
     color: #ffffff;
     background-color: #3E495D;
 }
 
-#pills-tab .nav-link.active {
-    background-color: #A078FF;
+.sidebar .nav-link.active {
+    background-color: #A078FF !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   Área Principal & Header
+   ========================================== */
+main {
+    background-color: #0B1326;
+}
+
+header.navbar {
+    background-color: #131B2E !important;
+    border-bottom: 1px solid #171F33 !important;
+}
+
+header .navbar-text {
+    color: #D0BCFF !important;
+}
+
+/* ==========================================
+   Sub-pestañas (Pills / Task Tabs)
+   ========================================== */
+.nav-pills .nav-link {
+    color: #CBC3D7;
+    background-color: transparent;
+}
+
+.nav-pills .nav-link:hover:not(.active) {
     color: #ffffff;
+    background-color: #3E495D;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #A078FF !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   Textos, Tarjetas y Resumen
+   ========================================== */
+h2, h3, h4, h5, .title-purple {
+    color: #D0BCFF;
+}
+
+.text-body-secondary, small, p {
+    color: #CBC3D7 !important;
+}
+
+/* Cards del Dashboard (Áreas de Enfoque) */
+.card-resumen-trabajo,
+.card-resumen-personal,
+.card-resumen-salud,
+.card-resumen {
+    background-color: #E9DDFF !important;
+    border: none;
+    color: #131B2E !important;
+}
+
+.card-resumen-trabajo *,
+.card-resumen-personal *,
+.card-resumen-salud * {
+    color: #131B2E !important;
+}
+
+/* Card Transparente con Borde */
+.card-anadir-tarea,
+.tareaCard {
+    background-color: rgba(255, 255, 255, 0) !important;
+    color: #ffffff;
+    border: 2px solid #171F33 !important;
+}
+
+/* Botones con estilo personalizado */
+.btn-primary {
+    background-color: #A078FF;
+    border-color: #A078FF;
+}
+
+.btn-primary:hover {
+    background-color: #8c5ee6;
+    border-color: #8c5ee6;
+}
+
+.btn-dark-custom {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+/* Modales */
+.modal-content {
+    background-color: #131B2E;
+    color: #edeff1;
+    border: 1px solid #171F33;
+}
+
+.modal-header, .modal-footer {
+    border-color: #171F33;
 }

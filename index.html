@@ -1,420 +1,348 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tashs - Planificador de Tareas</title>
+
+    <!-- Framework & Iconos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Fuentes externas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="image/png" href="imagenes/iconBlanco.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Calendario Extermal -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.css" rel="stylesheet">
-    <title>Tashs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="imagenes/iconBlanco.png">
 </head>
 
-<body>
+<body class="bg-body-tertiary">
 
-    <!-- Barra vertical - Nombres -->
-    <div class="d-flex align-items-start">
-        <div class="d-flex flex-column p-3 min-vh-100" id="sidebar-menu" style="min-width: 200px;">
-            <a class="navbar-brand d-flex align-items-center mb-3 text-decoration-none fw-bold fs-5" href="#">
+    <div class="d-flex min-vh-100">
+
+        <!-- Menú Lateral -->
+        <aside class="sidebar d-flex flex-column p-3 border-end bg-body" style="width: 260px;">
+            <a class="navbar-brand d-flex align-items-center mb-4 text-decoration-none fw-bold fs-4 px-2" href="#">
                 <img src="imagenes/iconBlanco.png" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top me-2">
                 Tashs
             </a>
 
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <button class="nav-link active text-start" id="v-pills-home-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                    aria-selected="true">
-                    <i class="bi bi-grid-1x2 me-2"></i> Dashboard
-                </button>
-                <button class="nav-link text-start" id="v-pills-profile-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                    aria-selected="false">
-                    <i class="bi bi-journal-check me-2"></i> Tareas
-                </button>
-                <button class="nav-link text-start" id="v-pills-messages-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
-                    aria-selected="false">
-                    <i class="bi bi-calendar me-2"></i> Calendario
-                </button>
-                <button class="nav-link text-start" id="v-pills-settings-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
-                    aria-selected="false">
-                    <i class="bi bi-person me-2"></i>Perfil
+            <!-- Navegación por pestañas (Sidebar) -->
+            <ul class="nav nav-pills flex-column mb-auto" id="mainTab" role="tablist">
+                <li class="nav-item mb-1" role="presentation">
+                    <button class="nav-link active w-100 text-start d-flex align-items-center py-2 px-3"
+                        id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard-tab-pane" type="button"
+                        role="tab">
+                        <i class="bi bi-grid-1x2 me-3 fs-5"></i> Dashboard
+                    </button>
+                </li>
+                <li class="nav-item mb-1" role="presentation">
+                    <button class="nav-link w-100 text-start d-flex align-items-center py-2 px-3" id="tasks-tab"
+                        data-bs-toggle="tab" data-bs-target="#tasks-tab-pane" type="button" role="tab">
+                        <i class="bi bi-journal-check me-3 fs-5"></i> Tareas
+                    </button>
+                </li>
+                <li class="nav-item mb-1" role="presentation">
+                    <button class="nav-link w-100 text-start d-flex align-items-center py-2 px-3" id="calendar-tab"
+                        data-bs-toggle="tab" data-bs-target="#calendar-tab-pane" type="button" role="tab">
+                        <i class="bi bi-calendar-event me-3 fs-5"></i> Calendario
+                    </button>
+                </li>
+                <li class="nav-item mb-1" role="presentation">
+                    <button class="nav-link w-100 text-start d-flex align-items-center py-2 px-3" id="profile-tab"
+                        data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab">
+                        <i class="bi bi-person me-3 fs-5"></i> Perfil
+                    </button>
+                </li>
+            </ul>
+
+            <div class="mt-auto pt-3 border-top">
+                <button class="btn btn-primary w-100 d-flex align-items-center justify-center gap-2 py-2"
+                    data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                    <i class="bi bi-plus-lg"></i> Crear Tarea
                 </button>
             </div>
-        </div>
+        </aside>
 
-        <!-- Barra vertical - Contenido -->
-        <div class="tab-content flex-grow-1 p-3 min-vh-100" id="v-pills-tabContent">
+        <!-- Contenido Principal -->
+        <main class="flex-grow-1 d-flex flex-column overflow-hidden">
 
-            <!-- Hoy - Contenido -->
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
-                tabindex="0">
-                <h1 id="titulosSubtitulos">Hola, Mishelle</h1>
-                <p id="datoVer">Bienvenida a la sección principal.</p>
+            <!-- Barra Superior -->
+            <header class="navbar navbar-expand border-bottom px-4 py-3 bg-body">
+                <div class="container-fluid p-0">
+                    <span class="navbar-text fs-5 fw-semibold text-body">Planificador de Tareas</span>
+                    <div class="d-flex align-items-center gap-3 ms-auto">
+                        <button class="btn btn-icon btn-outline-secondary border-0 rounded-circle" type="button">
+                            <i class="bi bi-bell"></i>
+                        </button>
+                        <button class="btn btn-icon btn-outline-secondary border-0 rounded-circle" type="button">
+                            <i class="bi bi-gear"></i>
+                        </button>
+                        <div class="vr mx-1"></div>
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFYHY0K3gS3HhSS9YCL0mdrob_pk_crQhJD2sP0PvVbtVcMV25ABYS24lAJ8M8J0gZFji7QaWA4G5JBI1EfWgXCB9HFUM_HZX6fw2OgfN85nLbBKFGOPue6ESe2eTiRApbsDc-jA1HxeAXGHOCKtmnPKmR_mL6q--TJFctxZayiUkLW3_YngCmaExS3d4LiYzE5WhCOelLbvb55aXlIBEm1aMPDdNOPgTW0YqKnqMklagFLU-himvh"
+                            alt="Usuario" width="36" height="36" class="rounded-circle object-fit-cover border">
+                    </div>
+                </div>
+            </header>
 
-                <div class="container-fluid">
-                    <div class="row">
+            <!-- Vistas (Pestañas) -->
+            <div class="tab-content flex-grow-1 p-4 overflow-y-auto" id="mainTabContent">
 
-                        <!-- Sección de Tareas -->
+                <!-- 1. DASHBOARD -->
+                <div class="tab-pane fade show active" id="dashboard-tab-pane" role="tabpanel">
+                    <div class="mb-4">
+                        <h2 class="fw-bold mb-1">Hola, Mishelle</h2>
+                        <p class="text-body-secondary">Bienvenida a tu resumen de actividad.</p>
+                    </div>
+
+                    <div class="row g-4">
+                        <!-- Listado de tareas rápidas -->
                         <div class="col-lg-8">
-                            <h4 id="titulosSubtitulos">Tareas para Hoy</h4>
+                            <h4 class="fw-bold mb-3">Tareas para Hoy</h4>
 
-                            <div class="card mb-3" id="anadirTareaCard">
-                                <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="checkDefault">
-                                        <label class="form-check-label" for="checkDefault">
-                                            Default checkbox
-                                        </label>
+                            <div class="card mb-3 tareaCard">
+                                <div class="card-body d-flex align-items-center justify-content-between p-3">
+                                    <div>
+                                        <h5 class="tarea-titulo mb-1">Diseñar mockups del dashboard</h5>
+                                        <small class="text-body-secondary">Fecha de entrega: 2026-08-25</small>
                                     </div>
+                                    <button class="btn btn-outline-primary btn-sm rounded-pill btn-completar-tarea">
+                                        Completar
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="card mb-3" id="anadirTareaCard">
-                                <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="checkChecked" checked>
-                                        <label class="form-check-label" for="checkChecked">
-                                            Checked checkbox
-                                        </label>
+                            <div class="card border-0 shadow-sm mb-3">
+                                <div class="card-body d-flex align-items-center justify-content-between p-3">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input me-2" type="checkbox" id="dashTask2" checked>
+                                        <label class="form-check-label text-decoration-line-through text-body-secondary"
+                                            for="dashTask2">Reunión de avance con el equipo</label>
                                     </div>
+                                    <button class="btn btn-sm btn-success rounded-pill disabled">Completada</button>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Áreas de enfoque -->
+                        <!-- Áreas de Enfoque -->
                         <div class="col-lg-4">
-                            <div class="card p-3" id="cardPrincipalResumen">
-
-                                <h4 id="titulosSubtitulos">Áreas de enfoque</h4>
-
+                            <div class="card border-0 shadow-sm p-3">
+                                <h4 class="fw-bold mb-3">Áreas de enfoque</h4>
                                 <div class="row g-3">
-
-                                    <!-- Trabajo -->
                                     <div class="col-6">
-                                        <div class="card h-100" id="cardResumenTrabajo">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Trabajo</h5>
-                                                <h6 class="card-subtitle text-body-secondary">
-                                                    Tareas
-                                                </h6>
+                                        <div class="card border bg-body-tertiary h-100">
+                                            <div class="card-body p-3">
+                                                <h6 class="card-title fw-bold text-primary mb-1">Trabajo</h6>
+                                                <small class="text-body-secondary">5 Tareas pendientes</small>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Personal -->
                                     <div class="col-6">
-                                        <div class="card h-100" id="cardResumenPersonal">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Personal</h5>
-                                                <h6 class="card-subtitle text-body-secondary">
-                                                    Tareas
-                                                </h6>
+                                        <div class="card border bg-body-tertiary h-100">
+                                            <div class="card-body p-3">
+                                                <h6 class="card-title fw-bold text-success mb-1">Personal</h6>
+                                                <small class="text-body-secondary">2 Tareas pendientes</small>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Salud -->
                                     <div class="col-12">
-                                        <div class="card" id="cardResumenSalud">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Salud</h5>
-                                                <h6 class="card-subtitle text-body-secondary">
-                                                    Tareas
-                                                </h6>
+                                        <div class="card border bg-body-tertiary">
+                                            <div class="card-body p-3">
+                                                <h6 class="card-title fw-bold text-info mb-1">Salud</h6>
+                                                <small class="text-body-secondary">1 Tarea pendiente</small>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- Ingresar la tarea -->
-                <h4 id="titulosSubtitulos">Agregar tarea</h4>
+                <!-- 2. TAREAS -->
+                <div class="tab-pane fade" id="tasks-tab-pane" role="tabpanel">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div>
+                            <h3 class="fw-bold mb-1">Tus Tareas</h3>
+                            <p class="text-body-secondary m-0">Gestiona y prioriza tu trabajo pendiente.</p>
+                        </div>
+                    </div>
+
+                    <!-- Sub-pestañas para Tareas -->
+                    <ul class="nav nav-pills mb-4 border-bottom pb-3" id="taskStatusTab" role="tablist">
+                        <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill"
+                                data-bs-target="#task-all">Todo</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill"
+                                data-bs-target="#task-pending">Por hacer</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill"
+                                data-bs-target="#task-in-progress">En curso</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill"
+                                data-bs-target="#task-done">Hecho</button></li>
+                    </ul>
+
+                    <div class="tab-content" id="taskStatusTabContent">
+                        <div class="tab-pane fade show active" id="task-all">
+                            <div class="col-lg-8" id="taskListContainer">
+                                <!-- Las tareas dinámicas se renderizan aquí -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="task-pending">...</div>
+                        <div class="tab-pane fade" id="task-in-progress">...</div>
+                        <div class="tab-pane fade" id="task-done">...</div>
+                    </div>
+                </div>
+
+                <!-- 3. CALENDARIO -->
+                <div class="tab-pane fade" id="calendar-tab-pane" role="tabpanel">
+                    <h3 class="fw-bold mb-3">Calendario</h3>
+                    <div class="card border-0 shadow-sm p-3">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="fechaCalendar" class="form-label text-body-secondary">Selecciona una
+                                    fecha:</label>
+                                <input type="date" class="form-control" id="fechaCalendar">
+                            </div>
+                        </div>
+                        <div id="calendarContainer" class="p-2 border rounded" style="min-height: 400px;">
+                            <p class="text-center text-muted py-5">Vista general de entregas programadas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. PERFIL -->
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel">
+                    <h3 class="fw-bold mb-4">Perfil</h3>
+
+                    <div class="row g-4">
+                        <div class="col-lg-8">
+                            <div class="card border-0 shadow-sm p-4 d-flex flex-row align-items-center gap-4">
+                                <img src="imagenes/FotoMishelle.png" alt="Mishelle Bohorquez" class="rounded-circle border" width="96"
+                                    height="96">
+                                <div>
+                                    <h4 class="fw-bold mb-1">Mishelle Bohorquez</h4>
+                                    <p class="text-body-secondary mb-3">mishelle_17@live.com</p>
+                                    <button class="btn btn-outline-primary btn-sm">Editar Perfil</button>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 shadow-sm p-4 mt-4">
+                                <h5 class="fw-bold mb-3">Configuración de la cuenta</h5>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="notifSwitch"
+                                        checked>
+                                    <label class="form-check-label" for="notifSwitch">Notificaciones por correo</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch"
+                                        checked>
+                                    <label class="form-check-label" for="darkModeSwitch">Modo Oscuro</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="d-flex flex-column gap-3">
+                                <div
+                                    class="card border-0 shadow-sm p-3 d-flex flex-row align-items-center justify-content-between">
+                                    <div>
+                                        <small
+                                            class="text-uppercase text-body-secondary fw-semibold">Completadas</small>
+                                        <h3 class="fw-bold m-0 text-primary">124</h3>
+                                    </div>
+                                    <i class="bi bi-check-circle fs-1 text-primary"></i>
+                                </div>
+                                <div
+                                    class="card border-0 shadow-sm p-3 d-flex flex-row align-items-center justify-content-between">
+                                    <div>
+                                        <small class="text-uppercase text-body-secondary fw-semibold">Racha
+                                            Semanal</small>
+                                        <h3 class="fw-bold m-0 text-warning">12 días</h3>
+                                    </div>
+                                    <i class="bi bi-fire fs-1 text-warning"></i>
+                                </div>
+                                <div
+                                    class="card border-0 shadow-sm p-3 d-flex flex-row align-items-center justify-content-between">
+                                    <div>
+                                        <small class="text-uppercase text-body-secondary fw-semibold">Horas Foco</small>
+                                        <h3 class="fw-bold m-0 text-info">48h</h3>
+                                    </div>
+                                    <i class="bi bi-clock-history fs-1 text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para Agregar Nueva Tarea (Bootstrap Standard Component) -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="addTaskModalLabel">Nueva Tarea</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <form id="taskForm">
+                    <div class="modal-body">
+                        <div id="errorAlert" class="alert alert-danger d-none" role="alert"></div>
 
-                    <div class="row g-3 mb-3">
-
-                        <div class="col-md-5">
-                            <label for="nombreTarea" class="form-label">
-                                Nombre tarea
-                            </label>
-
+                        <div class="mb-3">
+                            <label for="nombreTarea" class="form-label fw-semibold">Nombre de la Tarea</label>
                             <input type="text" class="form-control" id="nombreTarea"
-                                placeholder="Ingrese el nombre de la tarea">
+                                placeholder="Ej: Rediseñar formulario" required>
                         </div>
-
-                        <div class="col-md-5">
-                            <label for="descripcionTarea" class="form-label">
-                                Descripción tarea
-                            </label>
-
-                            <input type="text" class="form-control" id="descripcionTarea"
-                                placeholder="Ingrese descripción de la tarea">
+                        <div class="mb-3">
+                            <label for="descripcionTarea" class="form-label fw-semibold">Descripción</label>
+                            <textarea class="form-control" id="descripcionTarea" rows="3"
+                                placeholder="Detalles de la tarea..."></textarea>
                         </div>
-
-                        <div class="col-md-3">
-                            <label for="fechaEntrega" class="form-label">
-                                Fecha de entrega
-                            </label>
-
-                            <input type="date" class="form-control" id="fechaEntrega">
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="estado" class="form-label">
-                                Estado
-                            </label>
-
-                            <select class="form-select" id="estado">
-                                <option value="" selected disabled>
-                                    Seleccione...
-                                </option>
-
-                                <option value="porHacer">
-                                    Por hacer
-                                </option>
-
-                                <option value="enCurso">
-                                    En curso
-                                </option>
-
-                                <option value="hecho">
-                                    Hecho
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="prioridad" class="form-label">
-                                Prioridad
-                            </label>
-
-                            <select class="form-select" id="prioridad">
-                                <option value="" selected disabled>
-                                    Seleccione...
-                                </option>
-
-                                <option value="alta">
-                                    Alta
-                                </option>
-
-                                <option value="media">
-                                    Media
-                                </option>
-
-                                <option value="baja">
-                                    Baja
-                                </option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <!-- Alerta -->
-                    <div id="errorAlert" class="alert alert-danger d-none" role="alert">
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">
-                                Añadir
-                            </button>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="fechaEntrega" class="form-label fw-semibold">Fecha de entrega</label>
+                                <input type="date" class="form-control" id="fechaEntrega" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="estado" class="form-label fw-semibold">Estado</label>
+                                <select class="form-select" id="estado" required>
+                                    <option value="" selected disabled>Seleccione...</option>
+                                    <option value="porHacer">Por hacer</option>
+                                    <option value="enCurso">En curso</option>
+                                    <option value="hecho">Hecho</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="prioridad" class="form-label fw-semibold">Prioridad</label>
+                                <select class="form-select" id="prioridad" required>
+                                    <option value="" selected disabled>Seleccione...</option>
+                                    <option value="alta">Alta</option>
+                                    <option value="media">Media</option>
+                                    <option value="baja">Baja</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Añadir Tarea</button>
+                    </div>
                 </form>
             </div>
-
-
-            <!-- Tareas - Contenido -->
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-                tabindex="0">
-                <h3 id="titulosSubtitulos">Tus tareas</h3>
-                <p id="datoVer">Gestiona y prioriza tu trabajo pendiente.</p>
-
-                <!-- Pestañas de tareas -->
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-todo-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-todo" type="button" role="tab" aria-controls="pills-todo"
-                            aria-selected="true">Todo</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-porHacer-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-porHacer" type="button" role="tab" aria-controls="pills-porHacer"
-                            aria-selected="false">Por hacer</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-enCurso-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-enCurso" type="button" role="tab" aria-controls="pills-enCurso"
-                            aria-selected="false">En curso</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-hecho-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-hecho" type="button" role="tab" aria-controls="pills-hecho"
-                            aria-selected="false">Hecho</button>
-                    </li>
-                </ul>
-                <!-- Terminación de pestañas tareas -->
-
-                <!-- Contenido de las pestañas tareas -->
-                <div class="tab-content" id="pills-tabContent">
-
-                    <!-- Todo inicio -->
-                    <div class="tab-pane fade show active" id="pills-todo" role="tabpanel"
-                        aria-labelledby="pills-home-tab" tabindex="0">
-                        <div class="col-lg-8">
-
-                            <div class="card mb-3" id="anadirTareaCard">
-                                <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="checkDefault">
-                                        <label class="form-check-label" for="checkDefault">
-                                            Default checkbox
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card mb-3" id="anadirTareaCard">
-                                <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="checkChecked" checked>
-                                        <label class="form-check-label" for="checkChecked">
-                                            Checked checkbox
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Todo fin -->
-
-                    <!-- Pendiente inicio -->
-                    <div class="tab-pane fade" id="pills-pendiente" role="tabpanel" aria-labelledby="pills-profile-tab"
-                        tabindex="0">
-                        <div class="card mb-3" id="anadirTareaCard">
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="checkDefault">
-                                    <label class="form-check-label" for="checkDefault">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mb-3" id="anadirTareaCard">
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="checkChecked" checked>
-                                    <label class="form-check-label" for="checkChecked">
-                                        Checked checkbox
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pendiente fin -->
-
-                    <!-- Hecho inicio -->
-                    <div class="tab-pane fade" id="pills-hecho" role="tabpanel" aria-labelledby="pills-contact-tab"
-                        tabindex="0">
-                        <div class="card mb-3" id="anadirTareaCard">
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="checkDefault">
-                                    <label class="form-check-label" for="checkDefault">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mb-3" id="anadirTareaCard">
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="checkChecked" checked>
-                                    <label class="form-check-label" for="checkChecked">
-                                        Checked checkbox
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Hecho fin -->
-
-                    <!-- Prioridad inicio -->
-                    <div class="tab-pane fade" id="pills-prioridad" role="tabpanel" aria-labelledby="pills-disabled-tab"
-                        tabindex="0">
-                        <div class="card mb-3" id="anadirTareaCard">
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="checkDefault">
-                                    <label class="form-check-label" for="checkDefault">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mb-3" id="anadirTareaCard">
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="checkChecked" checked>
-                                    <label class="form-check-label" for="checkChecked">
-                                        Checked checkbox
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Prioridad fin -->
-                </div>
-                <!-- Terminación de Contenido de las pestañas tareas -->
-            </div>
-
-            <!-- Tareas - Contenido - Fin -->
-
-            <!-- Calendario - Contenido -->
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
-                tabindex="0">
-                <h3 id="titulosSubtitulos">Calendario</h3>
-                <div class="mb-3 style=" max-width: 300px;>
-                    <label for="fecha" class="form-label" id="datoVer">Selecciona una fecha:</label>
-                    <input type="date" class="form-control" id="fecha">
-                    <div id="v-pills-messages" class="tab-pane fade" role="tabpanel">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyectos - Contenido -->
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"
-                tabindex="0">
-                <h3 id="titulosSubtitulos">Perfil</h3>
-                <p id="datoVer">Perfil del usuario.</p>
-            </div>
-
         </div>
     </div>
 
+    <!-- Scripts de Framework e Lógica Modularizada -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/taskManager.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
