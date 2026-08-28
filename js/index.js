@@ -35,3 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+const name = document.querySelector('#nombreTarea').value;
+const description = document.querySelector('#descripcionTarea').value;
+const dueDate = document.querySelector('#fechaEntrega').value;
+const status = document.querySelector('#estado').value;
+
+taskManager.addTask(
+    name,
+    description,
+    dueDate,
+    status
+);
+
+newTaskForm.reset();

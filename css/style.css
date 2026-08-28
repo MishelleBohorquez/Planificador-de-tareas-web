@@ -1,6 +1,3 @@
-/* ==========================================
-   Estilos Generales
-   ========================================== */
 body {
     margin: 0;
     padding: 0;
@@ -9,9 +6,6 @@ body {
     color: #edeff1;
 }
 
-/* ==========================================
-   Menú Lateral (Sidebar)
-   ========================================== */
 .sidebar {
     background-color: #131B2E !important;
     min-height: 100vh;
@@ -39,9 +33,6 @@ body {
     color: #ffffff !important;
 }
 
-/* ==========================================
-   Área Principal & Header
-   ========================================== */
 main {
     background-color: #0B1326;
 }
@@ -55,9 +46,6 @@ header .navbar-text {
     color: #D0BCFF !important;
 }
 
-/* ==========================================
-   Sub-pestañas (Pills / Task Tabs)
-   ========================================== */
 .nav-pills .nav-link {
     color: #CBC3D7;
     background-color: transparent;
@@ -73,9 +61,6 @@ header .navbar-text {
     color: #ffffff !important;
 }
 
-/* ==========================================
-   Textos, Tarjetas y Resumen
-   ========================================== */
 h2, h3, h4, h5, .title-purple {
     color: #D0BCFF;
 }
@@ -84,7 +69,6 @@ h2, h3, h4, h5, .title-purple {
     color: #CBC3D7 !important;
 }
 
-/* Cards del Dashboard (Áreas de Enfoque) */
 .card-resumen-trabajo,
 .card-resumen-personal,
 .card-resumen-salud,
@@ -100,7 +84,6 @@ h2, h3, h4, h5, .title-purple {
     color: #131B2E !important;
 }
 
-/* Card Transparente con Borde */
 .card-anadir-tarea,
 .tareaCard {
     background-color: rgba(255, 255, 255, 0) !important;
@@ -108,7 +91,6 @@ h2, h3, h4, h5, .title-purple {
     border: 2px solid #171F33 !important;
 }
 
-/* Botones con estilo personalizado */
 .btn-primary {
     background-color: #A078FF;
     border-color: #A078FF;
@@ -125,7 +107,6 @@ h2, h3, h4, h5, .title-purple {
     border: none;
 }
 
-/* Modales */
 .modal-content {
     background-color: #131B2E;
     color: #edeff1;
