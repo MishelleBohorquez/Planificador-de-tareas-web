@@ -8,6 +8,9 @@ taskManager.addTask(
 console.log(taskManager.tasks);
 
 document.addEventListener('DOMContentLoaded', () => {
+    taskManager.loadTasks();
+    taskManager.render();
+
     const btnCompletarLista = document.querySelectorAll('.btn-completar-tarea');
     btnCompletarLista.forEach(boton => {
         boton.addEventListener('click', (event) => {
@@ -35,6 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const taskListContainer = document.querySelector('#taskListContainer');
+    taskListContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('delete-button')) {
+            const parentTask = event.target.parentElement;
+            const taskId = Number(parentTask.dataset.taskId);
+            taskManager.deleteTask(taskId);
+            taskManager.save();
+            taskManager.render();
+        }
+    });
 });
 
 const newTaskForm = document.querySelector('#taskForm');
@@ -52,6 +66,9 @@ newTaskForm.addEventListener('submit', function(event) {
         dueDate,
         status
     );
+
+    taskManager.save();
+    taskManager.render();
 
     newTaskForm.reset();
 });
