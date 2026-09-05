@@ -13,14 +13,17 @@ class TaskManager {
             status: 'PORHACER'
         });
     }
-    createTaskHtml(task) {
+    createTaskHtml(id, name, description, dueDate, status) {
         return `
         <div class="card mb-3 tareaCard">
-            <div class="card-body d-flex align-items-center justify-content-between p-3" data-task-id="${task.id}">
+            <div class="card-body d-flex align-items-center justify-content-between p-3" data-task-id="${id}">
                 <div>
-                    <h5 class="tarea-titulo mb-1">${task.name}</h5>
-                    <small class="text-body-secondary">Fecha de entrega: ${task.dueDate}</small>
+                    <h5 class="tarea-titulo mb-1">${name}</h5>
+                    <small class="text-body-secondary">Fecha de entrega: ${dueDate}</small>
                 </div>
+                <button class="done-button btn btn-success">
+                    Mark As Done
+                </button>
                 <button class="delete-button btn btn-danger">
                     Eliminar
                 </button>
@@ -32,7 +35,7 @@ class TaskManager {
         const taskListContainer = document.querySelector('#taskListContainer');
         let html = '';
         for (let task of this.tasks) {
-            html += this.createTaskHtml(task);
+            html += this.createTaskHtml(task.id, task.name, task.description, task.dueDate, task.status);
         }
         taskListContainer.innerHTML = html;
     }
@@ -53,5 +56,14 @@ class TaskManager {
             }
         }
         this.tasks = newTasks;
+    }
+    getTaskById(taskId) {
+        let foundTask;
+        for (let task of this.tasks) {
+            if (task.id === taskId) {
+                foundTask = task;
+            }
+        }
+        return foundTask;
     }
 }

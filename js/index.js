@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             taskManager.save();
             taskManager.render();
         }
+        if (event.target.classList.contains('done-button')) {
+            const parentTask = event.target.parentElement;
+            const taskId = Number(parentTask.dataset.taskId);
+            const task = taskManager.getTaskById(taskId);
+            task.status = 'DONE';
+            taskManager.render();
+        }
     });
 });
 
