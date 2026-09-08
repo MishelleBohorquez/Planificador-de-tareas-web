@@ -116,3 +116,10 @@ h2, h3, h4, h5, .title-purple {
 .modal-header, .modal-footer {
     border-color: #171F33;
 }
+
+#areaEnfoque option[value="trabajo"],
+#areaEnfoque option[value="personal"],
+#areaEnfoque option[value="salud"] {
+    color: #ffffff !important; 
+    background-color: #131B2E !important; 
+}
