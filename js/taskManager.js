@@ -148,12 +148,19 @@ class TaskManager {
         }
     }
     save() {
-        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        const tasksJson = JSON.stringify(this.tasks);
+        localStorage.setItem('tasks', tasksJson);
+        const currentId = String(this.currentId);
+        localStorage.setItem('currentId', currentId);
     }
-    loadTasks() {
-        const tasksGuardadas = localStorage.getItem('tasks');
-        if (tasksGuardadas) {
-            this.tasks = JSON.parse(tasksGuardadas);
+    load() {
+        const tasksJson = localStorage.getItem('tasks');
+        if (tasksJson) {
+            this.tasks = JSON.parse(tasksJson);
+        }
+        const currentId = localStorage.getItem('currentId');
+        if (currentId) {
+            this.currentId = Number(currentId);
         }
     }
     deleteTask(taskId) {
