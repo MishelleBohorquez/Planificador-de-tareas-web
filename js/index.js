@@ -1,14 +1,17 @@
 const taskManager = new TaskManager();
+taskManager.load();
+taskManager.render();
 taskManager.addTask(
+    'Sacar la basura',
+    'Sacar la basura al frente de la casa',
+    '2020-09-20',
+    'PORHACER'
 );
 console.log(taskManager.tasks);
 
 let taskIdToDelete = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-    taskManager.loadTasks();
-    taskManager.render();
-
     const calendarEl = document.querySelector('#calendarContainer');
     window.calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
