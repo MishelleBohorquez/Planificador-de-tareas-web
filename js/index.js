@@ -34,10 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     window.calendar.render();
 
-    document.querySelector('#calendar-tab').addEventListener('shown.bs.tab', function() {
-        window.calendar.updateSize();
-    });
-
     document.querySelector('#fechaCalendar').addEventListener('change', function() {
         window.calendar.gotoDate(this.value);
     });
