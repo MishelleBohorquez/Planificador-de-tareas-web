@@ -34,8 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     window.calendar.render();
 
-    // Fix: recalcular el tamaño del calendario cuando se muestra la pestaña,
-    // porque al estar oculta con display:none no puede medir su contenedor real.
     document.querySelector('#calendar-tab').addEventListener('shown.bs.tab', function() {
         window.calendar.updateSize();
     });
