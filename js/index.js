@@ -1,15 +1,15 @@
 const taskManager = new TaskManager();
-taskManager.load();
-taskManager.render();
-taskManager.addTask(
-    'Sacar la basura',
-    'Sacar la basura al frente de la casa',
-    '2020-09-20',
-    'PORHACER'
-);
-console.log(taskManager.tasks);
 
 let taskIdToDelete = null;
+
+fetch('http://localhost:8080/api/tasks')
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        taskManager.tasks = data;
+        taskManager.render();
+    });
 
 document.addEventListener('DOMContentLoaded', () => {
     const calendarEl = document.querySelector('#calendarContainer');
@@ -34,6 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     window.calendar.render();
 
+    // Fix: recalcular el tamaño del calendario cuando se muestra la pestaña,
+    // porque al estar oculta con display:none no puede medir su contenedor real.
+    document.querySelector('#calendar-tab').addEventListener('shown.bs.tab', function() {
+        window.calendar.updateSize();
+    });
+
     document.querySelector('#fechaCalendar').addEventListener('change', function() {
         window.calendar.gotoDate(this.value);
     });
@@ -43,10 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#confirmDeleteBtn').addEventListener('click', () => {
         if (taskIdToDelete !== null) {
-            taskManager.deleteTask(taskIdToDelete);
-            taskManager.save();
-            taskManager.render();
-            taskIdToDelete = null;
+            fetch('http://localhost:8080/api/tasks/' + taskIdToDelete, {
+                method: 'DELETE'
+            }).then(function() {
+                taskManager.deleteTask(taskIdToDelete);
+                taskManager.render();
+                taskIdToDelete = null;
+            });
         }
     });
 
@@ -67,8 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (task.status === 'DONE') {
                 task.completedAt = new Date().toISOString().split('T')[0];
             }
-            taskManager.save();
-            taskManager.render();
+            fetch('http://localhost:8080/api/tasks/' + taskId, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(task)
+            }).then(function() {
+                taskManager.render();
+            });
         }
     });
 });
@@ -80,21 +94,28 @@ newTaskForm.addEventListener('submit', function(event) {
     const name = document.querySelector('#nombreTarea').value;
     const description = document.querySelector('#descripcionTarea').value;
     const dueDate = document.querySelector('#fechaEntrega').value;
-    const status = document.querySelector('#estado').value;
     const area = document.querySelector('#areaEnfoque').value;
 
-    taskManager.addTask(
-        name,
-        description,
-        dueDate,
-        status
-    );
+    const nuevaTarea = {
+        name: name,
+        description: description,
+        dueDate: dueDate,
+        status: 'PORHACER'
+    };
 
-    const tareaCreada = taskManager.getTaskById(taskManager.currentId);
-    tareaCreada.area = area;
-
-    taskManager.save();
-    taskManager.render();
+    fetch('http://localhost:8080/api/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevaTarea)
+    })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(tareaCreada) {
+            tareaCreada.area = area;
+            taskManager.tasks.push(tareaCreada);
+            taskManager.render();
+        });
 
     newTaskForm.reset();
 });
